@@ -1,5 +1,6 @@
 export default class Main {
-	constructor() {
+	constructor(FilesDataService) {
+		this.root = FilesDataService.getRoot();
 	}
 }
 
