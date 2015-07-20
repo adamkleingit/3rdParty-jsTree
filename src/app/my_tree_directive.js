@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import treeData from './data.json'
 
 export default function MyTreeDirective() {
 	return {
@@ -11,16 +10,22 @@ export default function MyTreeDirective() {
 }
 
 class MyTreeDirectiveController {
-	constructor($element) {
+	constructor($element, $http) {
 		this._$element = $element;
+		this._$http = $http;
 		this._initTree();
 	}
 
 	_initTree() {
+
 		this.jstree = $(this._$element).jstree({
 			core: {
-				data: treeData
+				data: this._getData.bind(this)
 			}
 		});
 	}
+	_getData (obj, callback) {
+		this._$http.post('children', obj)
+			.then((response) => callback(response.data));
+    }
 }
