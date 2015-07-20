@@ -6,17 +6,14 @@ export default function MyTreeDirective() {
 		restrict: 'A',
 		bindToController: true,
 		controller: MyTreeDirectiveController,
-		controllerAs: 'MyTree',
-		scope: {
-			'treeOptions': '=myTree'
-		},
-		link: MyTreeLink
+		controllerAs: 'MyTree'
 	}
 }
 
 class MyTreeDirectiveController {
 	constructor($element) {
 		this._$element = $element;
+		this._initTree();
 	}
 
 	_initTree() {
@@ -26,8 +23,4 @@ class MyTreeDirectiveController {
 			}
 		});
 	}
-}
-
-function MyTreeLink($scope, $element, attrs, MyTree) {
-	MyTree._initTree();
 }
