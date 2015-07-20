@@ -1,0 +1,19 @@
+{
+  "name": "jstree",
+  "version": "0.0.0",
+  "homepage": "https://github.com/adamkleingit/3rdParty-jsTree",
+  "authors": [
+    "Adam Klein <adam@500tech.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-js-tree": "~0.0.6"
+  }
+}

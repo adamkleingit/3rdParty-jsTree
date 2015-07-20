@@ -1,0 +1,8 @@
+<div ui-grid="MyGrid.gridOptions" ui-grid-pagination ></div>
+<p>Current page: {{ MyGrid.gridOptions.gridApi.pagination.getPage() }} of {{ MyGrid.gridOptions.gridApi.pagination.getTotalPages() }}</p>
+<button type="button" class="btn btn-success" ng-click="MyGrid.gridOptions.gridApi.pagination.previousPage()">
+  previous page
+</button>
+<button type="button" class="btn btn-success" ng-click="MyGrid.gridOptions.gridApi.pagination.nextPage()">
+  next page
+</button>
