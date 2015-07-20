@@ -10,14 +10,14 @@ export default function MyTreeDirective() {
 }
 
 class MyTreeDirectiveController {
-	constructor($element, $http) {
+	constructor($element, $http, FilesDataService) {
 		this._$element = $element;
 		this._$http = $http;
+		this._FilesDataService = FilesDataService;
 		this._initTree();
 	}
 
 	_initTree() {
-
 		this.jstree = $(this._$element).jstree({
 			core: {
 				data: this._getData.bind(this)
@@ -25,7 +25,22 @@ class MyTreeDirectiveController {
 		});
 	}
 	_getData (obj, callback) {
-		this._$http.post('children', obj)
-			.then((response) => callback(response.data));
+		this._FilesDataService.getChildrenOf(obj.id)
+			.then((children) => {
+				let data = this._transformData(children);
+				callback(data);
+			});
     }
+
+	_transformData(children) {
+    	return children.map((node) => {
+			let jsTreeNode = {
+				text: node.text,
+				children: node.hasChild,
+				id: node.id
+			};
+			node.jsTreeNode = jsTreeNode;
+			return jsTreeNode;
+		});
+	}
 }
