@@ -15,6 +15,9 @@ class MyTreeDirectiveController {
 		this._$http = $http;
 		this._FilesDataService = FilesDataService;
 		this._initTree();
+		$scope.$on('$destroy', () => {
+			this.jstree.destroy();
+		});
 	}
 
 	_initTree() {
