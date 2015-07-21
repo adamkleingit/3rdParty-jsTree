@@ -12,9 +12,10 @@
     <div class="page-header">
       <h1>JS Tree</h1>
     </div>
+    <button class="btn" ng-click="Main.hideTree = !Main.hideTree">Toggle tree</button>
 
     <h3>total size: {{ Main.root.getTotalSize() }}</h3>
-    <div my-tree>one</div>
+    <div ng-if="!Main.hideTree" my-tree>one</div>
   </div>
 
 </body>

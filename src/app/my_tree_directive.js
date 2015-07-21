@@ -10,7 +10,7 @@ export default function MyTreeDirective() {
 }
 
 class MyTreeDirectiveController {
-	constructor($element, $http, FilesDataService) {
+	constructor($element, $http, FilesDataService, $scope) {
 		this._$element = $element;
 		this._$http = $http;
 		this._FilesDataService = FilesDataService;
@@ -18,7 +18,7 @@ class MyTreeDirectiveController {
 	}
 
 	_initTree() {
-		this.jstree = $(this._$element).jstree({
+		this.jstree = $.jstree.create(this._$element, {
 			core: {
 				data: this._getData.bind(this)
 			}
